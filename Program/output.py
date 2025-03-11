@@ -29,7 +29,7 @@ def plot_flight_conditions(params):
         inlet_conditions = compute_inlet_conditions(flight_conditions, params)
 
         T1_values.append(inlet_conditions["stagnation_temperature"])
-        P1_values.append(inlet_conditions["stagnation_pressure"])
+        P1_values.append(inlet_conditions["stagnation_pressure"] / 1000)  # Convert Pa to kPa
         sigma_values.append(inlet_conditions["pressure_recovery"])
 
     # === Plot: Altitude and T1 vs Mach Number ===
@@ -39,15 +39,14 @@ def plot_flight_conditions(params):
     ax1.set_xlabel("Flight Mach number")
     ax1.set_ylabel("Flight trajectory altitude H (km)", color='black')
     ax1.tick_params(axis='y', labelcolor='black')
-    ax1.set_ylim(0, 30)  # Set range from 0 to 1500 K
-    ax1.set_yticks(np.arange(0, 31, 5))  # Set ticks every 300 K
+    ax1.set_ylim(0, 30)  # Set range from 0 to 30 km
+    ax1.set_yticks(np.arange(0, 31, 5))  # Set ticks every 5 km
     
     # Create second y-axis for T1
     ax2 = ax1.twinx()
     ax2.plot(mach_numbers, T1_values, 'bo-', label="Intake recovered temperature")
     ax2.set_ylabel("Intake recovered temperature T1 (K)", color='blue')
     ax2.tick_params(axis='y', labelcolor='blue')
-    # Set y-axis range and tick spacing
     ax2.set_ylim(0, 1500)  # Set range from 0 to 1500 K
     ax2.set_yticks(np.arange(0, 1501, 300))  # Set ticks every 300 K
     plt.title("Variation of H and T1 with the Flight Mach Number")
@@ -61,14 +60,16 @@ def plot_flight_conditions(params):
     ax1.set_xlabel("Flight Mach number")
     ax1.set_ylabel("Total pressure recovery coefficient σ", color='black')
     ax1.tick_params(axis='y', labelcolor='black')
-    ax1.set_ylim(0, 1)  # Set range from 0 to 1500 K
-    ax1.set_yticks(np.arange(0, 1.2, 0.2))  # Set ticks every 300 K
+    ax1.set_ylim(0, 1)  # Set range from 0 to 1
+    ax1.set_yticks(np.arange(0, 1.2, 0.2))  # Set ticks every 0.2
 
     # Create second y-axis for P1
     ax2 = ax1.twinx()
     ax2.plot(mach_numbers, P1_values, 'bo-', label="Intake recovered pressure")
-    ax2.set_ylabel("Intake recovered pressure P1 (Pa)", color='blue')
+    ax2.set_ylabel("Intake recovered pressure P1 (kPa)", color='blue')
     ax2.tick_params(axis='y', labelcolor='blue')
-
+    ax2.set_ylim(0, 300)  # Set range from 0 to 300 kPa
+    ax2.set_yticks(np.arange(0, 301, 50))  # Set ticks every 50 kPa
+    
     plt.title("Variation of σ and P1 with the Flight Mach Number")
     plt.show()

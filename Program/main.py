@@ -54,7 +54,7 @@ def main():
         print(f"{key}: {value:.3f} {units_inlet[key]}")
 
     # === Call Plotting Function to verify the values of Intake ===
-    #plot_flight_conditions(params)
+    plot_flight_conditions(params)
     # === ===
      
     # === Compute Precooler Conditions ===

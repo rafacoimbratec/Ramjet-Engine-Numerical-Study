@@ -22,6 +22,7 @@ def compute_precooler(inlet_conditions, params):
     cp_helium = params.CP_HELIUM  # Specific heat capacity of helium (J/kg·K)
     mass_flow_air = params.MASS_FLOW_AIR  # Mass flow rate of air (kg/s)
     mass_flow_helium = params.HELIUM_FLOW_RATE  # Helium mass flow (kg/s)
+    precooler_efficiency = 0.95  # 95% efficiency factor
 
     # Define precooler exit temperature (assumed target temperature for now)
     T2_target = 150  # K (Example: Cooled air target temp)
@@ -29,13 +30,16 @@ def compute_precooler(inlet_conditions, params):
     # Compute required heat exchange (Q = m * Cp * ΔT)
     Q_air = mass_flow_air * cp_air * (T1 - T2_target)
     Q_helium = mass_flow_helium * cp_helium * (params.HELIUM_TEMP_INLET_HX1 - params.HELIUM_TEMP_OUTLET_HX1)
+    
+    # Apply precooler efficiency
+    Q_actual = Q_air * precooler_efficiency
 
     # Verify feasibility of cooling process
-    if Q_air > Q_helium:
+    if Q_actual > Q_helium:
         raise ValueError("Helium cooling capacity is insufficient!")
 
     # Compute actual exit temperature of air
-    T2 = T1 - (Q_air / (mass_flow_air * cp_air))
+    T2 = T1 - (Q_actual / (mass_flow_air * cp_air))
 
     # Apply small stagnation pressure loss (due to cooling)
     pressure_drop_factor = 0.98  # Example: 2% pressure loss
@@ -44,5 +48,5 @@ def compute_precooler(inlet_conditions, params):
     return {
         "stagnation_temperature": T2,
         "stagnation_pressure": P2,
-        "heat_removed": Q_air,
+        "heat_removed": Q_actual,
     }

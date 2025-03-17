@@ -39,6 +39,7 @@ class EngineParameters:
     # === COMBUSTION CHAMBER PARAMETERS ===
     COMBUSTION_EFFICIENCY = 0.98
     CHAMBER_PRESSURE = 2.0e6  # 2 MPa (typical for airbreathing mode)
+    MASS_FLOW_AIR = 382
     
     # === NOZZLE PARAMETERS ===
     NOZZLE_EXPANSION_RATIO = 50  # Area expansion ratio

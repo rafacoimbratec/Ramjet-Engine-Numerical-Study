@@ -6,8 +6,13 @@ import numpy as np
 # if __name__ == "__main__":
 #     gui.root.mainloop()  # Start the GUI
 
+AC1 = 0.0230 
+A2  = 0.0683 
+AC2 = 0.0390 
+A4 = 0.1417 
+
 # Run ramjet calculations with example inputs
-result = ramjet.calculations(0.1, 250, 3, 1.5, 0.5, 1750, 10000)
+result = ramjet.calculations(70e3,210,2.8,1.1,0.2,1700,50e3)
 print("Calculation Results:")
 print(f"Inlet Area (m²): {result[0]}")
 print(f"Inlet Throat Area (m²): {result[1]}")

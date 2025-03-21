@@ -74,7 +74,7 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
     T4_over_Tb = T4_over_Tob * T0b_over_Tb  
     T4 = Tb * T4_over_Tb
     M4 = np.sqrt(((T4_over_Tob**-1) - 1) * 2 / (gamma - 1))  
-    A4_over_AC2 = ((1 + M4**2 * (gamma - 1) / 2)**(((gamma + 1) / (gamma - 1)) / 2)) *(((gamma + 1) / 2)**(((gamma + 1) / (gamma - 1)) / 2)) / M4  
+    A4_over_AC2 = (1/M4)*((1+((gamma-1)/2)*M4**2)/((gamma+1)/2))**((gamma+1)/(2*(gamma-1)))  
     U4 = M4 * np.sqrt(gamma * R * T4_over_Tb * Tb)  # Exhaust velocity
     A4_over_A1 = A4_over_AC2 * AC2_over_A1  # Exhaust Area relationship
     A1 = Thrust * (P1 * gamma * M1**2 * ((M4**2 / M1**2) * A4_over_A1 - 1))**-1  

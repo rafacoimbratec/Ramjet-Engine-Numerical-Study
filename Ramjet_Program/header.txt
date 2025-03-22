@@ -16,7 +16,7 @@ v1.0.0
 \author{Gonçalo Coelho ist1112327}
 
 ## (d) Date of Initial Coding
-March 2025
+February 2025
 
 ## (e) Program Description
 This program calculates the performance and design parameters of a ramjet engine based on ideal assumptions. It includes thermal and propulsive efficiency calculations and supports parametric studies over various design variables.

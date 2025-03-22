@@ -50,10 +50,10 @@ plt.show()
 '''
 def parametric_study():
     # 1. Vary Flight Mach Number M1
-    M1_vals = np.linspace(1, 10, 450)
+    M1_vals = np.linspace(1, 5.5, 450)
     eta_th, eta_prop, eta_total = [], [], []
     for M1 in M1_vals:
-        *_, eth, ep,total = calculations(70e3, 210, M1, 1.1, 0.2, 3000, 50000)
+        *_, eth, ep,total = calculations(70e3, 210, M1, 1.1, 0.2, 1700, 50000)
         eta_th.append(eth)
         eta_prop.append(ep)
         eta_total.append(total)
@@ -88,7 +88,7 @@ def parametric_study():
     plt.grid(True)
 
     # 3. Vary Free-Stream Temperature T1
-    T1_vals = np.arange(201, 290)
+    T1_vals = np.arange(0, 500)
     eta_th, eta_prop, eta_total = [], [], []
     for T1 in T1_vals:
         *_, eth, ep,total = calculations(70e3, T1, 2.8, 1.1, 0.2, 1700, 50000)

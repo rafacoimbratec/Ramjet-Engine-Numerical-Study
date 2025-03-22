@@ -1,0 +1,58 @@
+# RAMJET ENGINE SIMULATOR
+
+## (a) Name
+Ramjet Engine Performance and Design Simulator
+
+## (b) Current Version Number
+v1.0.0
+
+## (c) Authors
+\author{Rafael Azeiteiro ist1102478}
+\author{Eduardo Helena ist1102793}
+\author{Elena Francesca Cipriano ist112514}
+\author{Denis Ring ist112102}
+\author{Guilherme Martins ist1112118}
+\author{Érica Cunha ist1112267}
+\author{Gonçalo Coelho ist1112327}
+
+## (d) Date of Initial Coding
+March 2025
+
+## (e) Program Description
+This program calculates the performance and design parameters of a ramjet engine based on ideal assumptions. It includes thermal and propulsive efficiency calculations and supports parametric studies over various design variables.
+
+## (f) Algorithms Used
+Algorithms based on compressible flow relations (isentropic flow, shock relations, Rayleigh flow) were implemented using theoretical models from:
+
+Aircraft Propulsion by Saeed Farokhi (2nd Ed.)
+J. D. Anderson, **Modern Compressible Flow**: With Historical Perspective, 3rd Edition, McGraw-Hill
+Education, New York, 2002.
+Antonella Ingenito, **Subsonic Combustion Ramjet Design**, Springer, 2021.
+
+Adjustments were made to enable parametric evaluations and plotting functionality.
+
+## (g) Inputs
+- Free-stream pressure (Pa)
+- Free-stream temperature (K)
+- Flight Mach number
+- Shock strength
+- Burner entry Mach
+- Burner temperature
+- Required thrust
+
+## (h) Outputs
+- Inlet, burner, nozzle areas
+- Thermal, propulsive and total efficiency
+- Pressure and temperature profiles
+- Entropy change visualization
+
+## (i) Dependencies
+- Python 3.x
+- numpy
+- matplotlib
+
+## (j) Development Environment
+Tested with Python 3.11 and matplotlib 3.8.0 on Windows
+
+## (k) List of Changes and Date
+- v1.0.0 (Mar 2025): Initial release with design and parametric functionality

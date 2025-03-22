@@ -1,7 +1,7 @@
 # 🚀 Ramjet Engine Simulation
 
 This program was developed under the course Space Launchers from Instituto Superior Técnico.
-A Python-based simulation tool to model the performance of a ramjet engine, including the evaluation of key geometric parameters, thermal and propulsive efficiency, and parametric analysis across design conditions.
+A Python-based simulation tool to model the performance of a ramjet engine - find the software assumptions in the full report below.
 
 ## 🔧 Features
 
@@ -17,6 +17,8 @@ A Python-based simulation tool to model the performance of a ramjet engine, incl
 - Built-in **parametric study**:
   - Vary Mach number, burner temperature, shock strength, thrust, etc.
 - Easy-to-use **menu interface** via terminal
+
+📄 [Download Full Report (PDF)](Ramjet_Program/Report.pdf)
 
 ## 📂 Project Structure
 
@@ -39,18 +41,6 @@ Then choose from the terminal menu:
 - Option 1: Analyze a custom design case by entering engine parameters
 - Option 2: Run a parametric study across a chosen variable - Check the code for what are the constant values of the remaining variables
 
-## 🔢 Example
-
-```
-Enter your choice [1 or 2]: 1
-Free-stream Pressure P1 (Pa): 70000
-Free-stream Temperature T1 (K): 210
-Flight Mach Number M1: 3
-...
-```
-
-Results are printed and plotted automatically.
-
 ### Dependencies:
 - `numpy`
 - `matplotlib`
@@ -66,13 +56,23 @@ The diagram below illustrates engine stations used in the calculations:
 - b: Burner exit
 - T2: Nozzle throat
 - 4: Exhaust
-(ramjet_stations.png)
+<p align="center">
+  <img src="Ramjet_Program/ramjet_stations.png" alt="Engine Stations" width="300"/>
+</p>
+
 ## 👨‍💻 Author
 
 Rafael [@rafacoimbratec]  
 ---
 
-📘 Inspired by **Aircraft Propulsion** by Saeed Farokhi (2nd Ed.)
+📘 Literature:
+
+**Aircraft Propulsion** by Saeed Farokhi (2nd Ed.)
+
+J. D. Anderson, **Modern Compressible Flow**: With Historical Perspective, 3rd Edition, McGraw-Hill
+Education, New York, 2002.
+
+Antonella Ingenito, **Subsonic Combustion Ramjet Design**, Springer, 2021.
 
 
 

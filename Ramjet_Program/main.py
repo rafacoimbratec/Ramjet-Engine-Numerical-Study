@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from ramjet import calculations  # Your updated calculations function
-'''
+
 # Run ramjet calculations with example inputs
-result = calculations(70e3, 210, 3.25, 1.2, 0.3, 1800, 10e3)
+result = calculations(2e3, 220, 5, 1.1, 0.3, 2600, 15e3)
 
 A1, AC1, A2, AC2, A4 = result[0:5]
 eta_thermal, eta_propulsive, total_eta = result[8:]
@@ -34,7 +34,7 @@ plt.grid(True)
 # 2. Pressure variation
 plt.figure()
 plt.scatter(stations, pressures, color='blue')
-plt.ylabel("Pressure (Bar)")
+plt.ylabel("Pressure (kPa)")
 plt.title("Pressure Variation Along Engine")
 plt.grid(True)
 
@@ -50,10 +50,10 @@ plt.show()
 '''
 def parametric_study():
     # 1. Vary Flight Mach Number M1
-    M1_vals = np.linspace(1, 5.5, 450)
+    M1_vals = np.linspace(1, 6.4, 450)
     eta_th, eta_prop, eta_total = [], [], []
     for M1 in M1_vals:
-        *_, eth, ep,total = calculations(70e3, 210, M1, 1.1, 0.2, 1700, 50000)
+        *_, eth, ep,total = calculations(2e3, 220, M1, 1.1, 0.3, 2600, 15e3)
         eta_th.append(eth)
         eta_prop.append(ep)
         eta_total.append(total)
@@ -186,3 +186,4 @@ def parametric_study():
 
 if __name__ == '__main__':
    parametric_study()
+'''

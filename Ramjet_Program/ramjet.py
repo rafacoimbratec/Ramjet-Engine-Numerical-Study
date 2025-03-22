@@ -103,11 +103,12 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
 
     # Build profiles along engine (T and p and ds = delta s)
     temperatures = [T1, T2, Tb, T4]
-    pressures = [P1, P2_over_P1 * P1, Pb, P1]  # assume P4 = P1
+    pressures = [P1 * 10**-5 , P2_over_P1 * P1 * 10**-5 , Pb * 10**-5 , P1 * 10**-5 ] # assume P4 = P1
+    print(pressures)
     temp_vs_ds = []
     s1 = cp_air * np.log(T1) - R * np.log(P1 * 1e5)
     for T, P in zip(temperatures, pressures):
-        s = cp_air * np.log(T) - R * np.log(P * 1e5)
+        s = cp_air * np.log(T) - R * np.log(P * 1e5) # Convert to J/kg.K
         temp_vs_ds.append((T, s - s1))
 
     return A1, AC1, A2, AC2, A4,temp_vs_ds, pressures, temperatures, eta_thermal_cycle_real, eta_propulsive, total_eta

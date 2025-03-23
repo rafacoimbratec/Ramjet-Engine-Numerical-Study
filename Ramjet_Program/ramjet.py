@@ -27,6 +27,7 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
     gamma = 1.4                      # Ratio of specific heats for air
     R = 287                          # Specific gas constant for air (J/kg.K)
     cp_air = gamma * R / (gamma - 1)  # Specific heat at constant pressure
+    
 
     # --- Inlet properties ---
     a1 = np.sqrt(gamma * R * T1)     # Speed of sound at inlet (m/s)
@@ -99,9 +100,10 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
     sum_m = m_air + mf               # Total mass flow (air + fuel), used for analysis if needed
 
     # --- Efficiency Calculations ---
-    eta_thermal_cycle_real = (Tb - T2 - T4 + T1) / (Tb - T2)  # Net mech output / heat input
+    eta_thermal_cycle_real = 1-T1/T2 #(Tb - T2 - T4 + T1) / (Tb - T2)  # Net mech output / heat input #Ideal ramjet cycle efficiency
     eta_propulsive = 2 / (1 + U4 / U1)                        # Thrust power / mech output
-    total_eta = eta_thermal_cycle_real * eta_propulsive
+    real_eta_thermal_cycle = (Tb-T2-T4+T1)/(Tb-T2)  # Real thermal efficiency
+    total_eta = real_eta_thermal_cycle * eta_propulsive
 
     # --- Specific Thrust ---
     specific_thrust = Thrust / (air_density * A1 * U1)
@@ -117,4 +119,4 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
         s = cp_air * np.log(T) - R * np.log(P * 1e5)
         temp_vs_ds.append((T, s - s1))
 
-    return A1, AC1, A2, AC2, A4, temp_vs_ds, pressures, temperatures, eta_thermal_cycle_real, eta_propulsive, total_eta
+    return A1, AC1, A2, AC2, A4, temp_vs_ds, pressures, temperatures, eta_thermal_cycle_real, eta_propulsive, total_eta,real_eta_thermal_cycle

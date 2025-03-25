@@ -119,4 +119,4 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
         s = cp_air * np.log(T) - R * np.log(P * 1e5)
         temp_vs_ds.append((T, s - s1))
 
-    return A1, AC1, A2, AC2, A4, temp_vs_ds, pressures, temperatures, eta_thermal_cycle_real, eta_propulsive, total_eta,real_eta_thermal_cycle
+    return A1, AC1, A2, AC2, A4, temp_vs_ds, pressures, temperatures, eta_thermal_cycle_real, eta_propulsive, total_eta, real_eta_thermal_cycle, T2, T4

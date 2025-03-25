@@ -73,83 +73,98 @@ def run_parametric_study():
     choice = input("Enter your choice [1-7]: ")
 
     x_vals = []
-    eta_th, eta_prop, eta_total, real_eta_th = [], [], [],[]
+    eta_th, eta_prop, eta_total, real_eta_th = [], [], [], []
+    T2_vals, T4_vals = [], []
 
     # Define parameter ranges and call calculations
     if choice == '1':
         x_vals = np.linspace(1, 5.55, 450)
         label = 'Flight Mach Number M1'
         for M1 in x_vals:
-            *_, eth, ep, etot,real = calculations(70e3, 210, M1, 1.1, 0.3, 1700, 50000)
+            *_, eth, ep, etot, real, T2, T4 = calculations(70e3, 210, M1, 1.1, 0.3, 1700, 50000)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
 
     elif choice == '2':
         x_vals = np.linspace(1e3, 1e5, 200)
         label = 'Free-stream Pressure P1 (Pa)'
         for P1 in x_vals:
-            *_, eth, ep, etot,real = calculations(P1, 210, 2.8, 1.1, 0.2, 1700, 50000)
+            *_, eth, ep, etot, real, T2, T4 = calculations(P1, 210, 2.8, 1.1, 0.2, 1700, 50000)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
 
     elif choice == '3':
         x_vals = np.arange(200, 500)
         label = 'Free-stream Temperature T1 (K)'
         for T1 in x_vals:
-            *_, eth, ep, etot,real = calculations(70e3, T1, 2.8, 1.1, 0.2, 1700, 50000)
+            *_, eth, ep, etot, real, T2, T4 = calculations(70e3, T1, 2.8, 1.1, 0.2, 1700, 50000)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
 
     elif choice == '4':
         x_vals = np.linspace(1.01, 1.8, 200)
         label = 'Shock Strength Ms'
         for Ms in x_vals:
-            *_, eth, ep, etot,real = calculations(70e3, 210, 2.8, Ms, 0.2, 1700, 50000)
+            *_, eth, ep, etot, real, T2, T4 = calculations(70e3, 210, 2.8, Ms, 0.2, 1700, 50000)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
 
     elif choice == '5':
         x_vals = np.linspace(0.01, 1, 200)
         label = 'Burner Entry Mach Number M2'
         for M2 in x_vals:
-            *_, eth, ep, etot,real = calculations(70e3, 210, 2.8, 1.1, M2, 1700, 50000)
+            *_, eth, ep, etot, real, T2, T4 = calculations(70e3, 210, 2.8, 1.1, M2, 1700, 50000)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
 
     elif choice == '6':
         x_vals = np.arange(1500, 2001)
         label = 'Burner Temperature Tb (K)'
         for Tb in x_vals:
-            *_, eth, ep, etot,real = calculations(70e3, 210, 2.8, 1.1, 0.2, Tb, 50000)
+            *_, eth, ep, etot, real, T2, T4 = calculations(70e3, 210, 2.8, 1.1, 0.2, Tb, 50000)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
 
     elif choice == '7':
         x_vals = np.linspace(1e3, 100e3, 200)
         label = 'Thrust (N)'
         for Thrust in x_vals:
-            *_, eth, ep, etot,real = calculations(70e3, 210, 2.8, 1.1, 0.2, 1700, Thrust)
+            *_, eth, ep, etot, real, T2, T4 = calculations(70e3, 210, 2.8, 1.1, 0.2, 1700, Thrust)
             eta_th.append(eth)
             eta_prop.append(ep)
             eta_total.append(etot)
             real_eta_th.append(real)
+            T2_vals.append(T2)
+            T4_vals.append(T4)
     else:
         print("Invalid choice.")
         return
 
-    # --- Plotting results ---
+    # --- Plotting efficiencies ---
     plt.figure()
     plt.plot(x_vals, eta_prop, 'b', label='Propulsive Efficiency')
     plt.plot(x_vals, eta_th, 'r', label='Ideal Thermal Efficiency')
@@ -160,7 +175,19 @@ def run_parametric_study():
     plt.title(f'Efficiency vs {label}')
     plt.legend()
     plt.grid(True)
+
+    # --- Plotting T2 and T4 ---
+    plt.figure()
+    plt.plot(x_vals, T2_vals, 'c', label='T2 (Burner Entry Temp)')
+    plt.plot(x_vals, T4_vals, 'm', label='T4 (Nozzle Exit Temp)')
+    plt.xlabel(label)
+    plt.ylabel('Temperature (K)')
+    plt.title(f'Temperatures T2 and T4 vs {label}')
+    plt.legend()
+    plt.grid(True)
+
     plt.show()
+
 
 
 def main():

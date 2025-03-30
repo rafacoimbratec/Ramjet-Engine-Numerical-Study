@@ -1,4 +1,5 @@
 # RAMJET ENGINE SIMULATOR
+Github: https://github.com/rafacoimbratec/Ramjet-Engine-Numerical-Study
 
 ## (a) Name
 Ramjet Engine Performance and Design Simulator
@@ -7,13 +8,13 @@ Ramjet Engine Performance and Design Simulator
 v1.0.0
 
 ## (c) Authors
-\author{Rafael Azeiteiro ist1102478}
-\author{Eduardo Helena ist1102793}
-\author{Elena Francesca Cipriano ist112514}
-\author{Denis Ring ist112102}
-\author{Guilherme Martins ist1112118}
-\author{Érica Cunha ist1112267}
-\author{Gonçalo Coelho ist1112327}
+Rafael Azeiteiro ist1102478
+Eduardo Helena ist1102793
+Elena Francesca Cipriano ist112514
+Denis Ring ist112102
+Guilherme Martins ist1112118
+Érica Cunha ist1112267
+Gonçalo Coelho ist1112327
 
 ## (d) Date of Initial Coding
 February 2025
@@ -24,10 +25,10 @@ This program calculates the performance and design parameters of a ramjet engine
 ## (f) Algorithms Used
 Algorithms based on compressible flow relations (isentropic flow, shock relations, Rayleigh flow) were implemented using theoretical models from:
 
-Aircraft Propulsion by Saeed Farokhi (2nd Ed.)
-J. D. Anderson, **Modern Compressible Flow**: With Historical Perspective, 3rd Edition, McGraw-Hill
+1-'Aircraft Propulsion' by Saeed Farokhi (2nd Ed.)
+2-J. D. Anderson, 'Modern Compressible Flow: With Historical Perspective', 3rd Edition, McGraw-Hill
 Education, New York, 2002.
-Antonella Ingenito, **Subsonic Combustion Ramjet Design**, Springer, 2021.
+3-Antonella Ingenito, 'Subsonic Combustion Ramjet Design', Springer, 2021.
 
 Adjustments were made to enable parametric evaluations and plotting functionality.
 
@@ -48,11 +49,11 @@ Adjustments were made to enable parametric evaluations and plotting functionalit
 
 ## (i) Dependencies
 - Python 3.x
-- numpy
-- matplotlib
+- numpy 2.1.3
+- matplotlib 3.9.2
 
 ## (j) Development Environment
-Tested with Python 3.11 and matplotlib 3.8.0 on Windows
+Tested with Python 3.11 and matplotlib 3.9.2 on Windows
 
 ## (k) List of Changes and Date
 - v1.0.0 (Mar 2025): Initial release with design and parametric functionality

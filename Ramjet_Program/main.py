@@ -20,7 +20,7 @@ def run_design_case():
 
     result = calculations(P1, T1, M1, Ms, M2, Tb, Thrust)
     A1, AC1, A2, AC2, A4 = result[0:5]
-    eta_thermal, eta_propulsive, total_eta,real_eta_thermal = result[8:]
+    eta_thermal, eta_propulsive, total_eta,real_eta_thermal = result[8:12]
     temp_vs_ds, pressures, temperatures = result[5:8]
     stations = ['Inlet', 'Burner Entry', 'Burner Exit', 'Nozzle Exit']
 

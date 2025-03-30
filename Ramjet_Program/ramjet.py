@@ -68,7 +68,7 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
     Pb = P1 * P2_over_P1
 
     # Exit of burner
-    Mb = M2 * np.sqrt(Tb / T2)  # Assuming constant pressure combustion
+    Mb = M2 * np.sqrt(Tb / T2)  # Assuming constant pressure combustion #ideal gas law
     Ab_over_AC2 = (1/Mb)*((1+((gamma - 1)/2)*Mb**2)/((gamma + 1)/2))**((gamma + 1)/(2*(gamma - 1)))
     Tb_over_T0b = 1 / (1 + (gamma - 1) * Mb**2)
     AC2_over_A1 = A2_over_A1 / Ab_over_AC2

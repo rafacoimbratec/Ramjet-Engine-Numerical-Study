@@ -118,5 +118,19 @@ def calculations(P1, T1, M1, Ms, M2, Tb, Thrust):
     for T, P in zip(temperatures, pressures):
         s = cp_air * np.log(T) - R * np.log(P * 1e5)
         temp_vs_ds.append((T, s - s1))
+        
+     # --- Total pressure difference ---
+    P01 = P1 / P1_over_P0x
+    P0b = Pb / Pb_over_P0b
+    delta_P0 = P0b - P01
+    print(f"P04 - P01 = {delta_P0:.2f} Pa")
+    
+    # --- Total pressure drop across the normal shock ---
+    P0x = P1 / P1_over_P0x
+    P0y = P0x * P0y_over_P0x
+    delta = P0x/P0y
+    print(f"P0x / P0y = {delta:.2f} Pa")
+    delta_P0_shock = P0x - P0y
+    print(f"P0x - P0y = {delta_P0_shock:.2f} Pa")
 
     return A1, AC1, A2, AC2, A4, temp_vs_ds, pressures, temperatures, eta_thermal_cycle_real, eta_propulsive, total_eta, real_eta_thermal_cycle, T2, T4
